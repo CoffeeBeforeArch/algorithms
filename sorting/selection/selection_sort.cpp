@@ -9,18 +9,10 @@
 // Selection sort implementation
 // More modern C++
 void sort(std::vector<int> &v) {
-  // Get iterators to the current element and end of the vector
-  auto current = begin(v);
-  auto last = end(v);
-
-  // Keep putting elements in their correct place until we run out
-  while (current != last) {
-    // Find the smallest element
-    auto min = std::min_element(current, last);
-    // Swap it into place
-    std::swap(*current, *min);
-    // Find the min element for the next index
-    current++;
+  // For each index...
+  for (auto current = begin(v); current < end(v); ++current) {
+    // Swap in the smallest element
+    std::iter_swap(current, std::min_element(current, end(v)));
   }
 }
 
