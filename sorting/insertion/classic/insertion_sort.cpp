@@ -9,20 +9,14 @@
 // Insertion sort implementation
 // More modern C++
 void sort(std::vector<int> &v) {
-  // Current element and end of vector
-  auto first = begin(v);
-
-  // Keep inserting until we run out of elements
-  for (auto pivot = begin(v) + 1u; pivot < end(v); ++pivot) {
-    // Current element to sort and start of sorted sub-array
-    auto current = pivot;
-    auto prev = pivot - 1u;
-    // Swap until we hit the pivot is the first element or we found the right
-    // position
-    while (current != first && (*current < *prev)) {
-      // Swap contents and move both iterators to the left
-      // Sinks the smallest element into place
-      std::iter_swap(current--, prev--);
+  // For each element not in the sorted sub-array...
+  for (auto i = 1u; i < v.size(); i++) {
+    // Start at the current element
+    auto j = i;
+    // And swap it downward into place
+    while (j > 0 && v[j - 1] > v[j]) {
+      std::swap(v[j - 1], v[j]);
+      j--;
     }
   }
 }
