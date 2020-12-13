@@ -9,19 +9,24 @@
 // Insertion sort implementations
 void sort(std::vector<int> &values) {
   // For each element not in the sorted sub-vector
-  for (auto i = 1u; i < values.size(); i++) {
-    // Indices of elements to compare
-    auto current = i;
+  // Skip first element (sorted sub-vector contains only a single element)
+  for (auto to_insert = 1u; to_insert < values.size(); to_insert++) {
+    // Start comparing elements starting at the element we want to insert
+    auto current = to_insert;
 
-    // Go through all elements in the sorted sub-vector
+    // While the current element is not the first in sub-vector
     while (current > 0) {
+      // We compare the current element to the previous in the sub-vector
+      auto prev = current - 1;
+
       // Exit when we reach the insertion point
-      if (values[current - 1] <= values[current]) break;
+      // (When the prev element is smaller)
+      if (values[prev] <= values[current]) break;
 
-      // Swap the elements over
-      std::swap(values[current - 1], values[current]);
+      // Swap the smaller element downward
+      std::swap(values[prev], values[current]);
 
-      // Move the index over
+      // Move the current element to compare over
       current--;
     }
   }

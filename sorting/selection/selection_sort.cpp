@@ -6,26 +6,27 @@
 #include <random>
 #include <vector>
 
-// Selection sort implementations
+// Selection sort implementation
 void sort(std::vector<int> &values) {
   // For each unsorted element in the vector
-  for (auto i = 0u; i < values.size() - 1; i++) {
-    // Assume that the current value is the min
-    auto min_value = values[i];
-    auto min_index = i;
+  // The last element is implicitly sorted (all other elements were smaller)
+  for (auto pos = 0u; pos < values.size() - 1; pos++) {
+    // Assume that the current position is the min
+    auto min_value = values[pos];
+    auto min_index = pos;
 
     // Compare it against the remaining unsorted elements
-    for (auto j = i + 1; j < values.size(); j++) {
-      // Check if the if we found a smaller element
-      if (values[j] < min_value) {
+    for (auto current = pos + 1; current < values.size(); current++) {
+      // Check if the current value is smaller than the current minimum
+      if (values[current] < min_value) {
         // Update the min value and index
-        min_value = values[j];
-        min_index = j;
+        min_value = values[current];
+        min_index = current;
       }
     }
 
     // Move the next smallest element into the correct place
-    std::swap(values[i], values[min_index]);
+    std::swap(values[pos], values[min_index]);
   }
 }
 
