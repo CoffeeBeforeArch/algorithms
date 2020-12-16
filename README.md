@@ -7,6 +7,14 @@ This repository contains implementations for a number of common algorithms (sort
 - Selection Sort
 - Insertion Sort
 - Bubble Sort
+- Merge Sort
+- Quick Sort
+- Shell Sort
+- Heap Sort
+- Comb Sort
+- Counting Sort
+- Bucket Sort
+- Radix sort
 
 ## Contact Information
 
