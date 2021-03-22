@@ -74,7 +74,7 @@ void print(const std::vector<int> &values) {
 
 int main() {
   // Number of elements to sort
-  int N = 3;
+  int N = 16;
 
   // Create our random number generator
   std::mt19937 rng;
